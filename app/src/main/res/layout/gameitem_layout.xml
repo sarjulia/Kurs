@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/name_ev"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="24dp"
+        android:text="Название" />
+
+    <TextView
+        android:id="@+id/minpeop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/name_ev"
+        android:layout_marginTop="158dp"
+        android:text="Min" />
+
+    <TextView
+        android:id="@+id/Maxpeop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/minpeop"
+        android:layout_marginStart="85dp"
+        android:text="Max" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="299dp"
+        android:layout_height="79dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:text="Описание" />
+
+    <TextView
+        android:id="@+id/tags"
+        android:layout_width="202dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/name_ev"
+        android:layout_marginTop="206dp"
+        android:text="Тэги" />
+
+</RelativeLayout>
