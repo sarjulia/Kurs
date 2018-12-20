@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.annotation.MainThread;
+import android.support.v7.app.AppCompatActivity;
 
 
 import java.io.BufferedReader;
@@ -18,12 +20,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class BackgroundWorker extends AsyncTask<String,Void,String> {
+public class BackgroundWorker extends AsyncTask<String,Boolean,String> {
     Context context;
+    public boolean good = false;
     AlertDialog alertDialog;
     BackgroundWorker (Context ctx) {
         context = ctx;
     }
+
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
@@ -56,6 +60,9 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
+                int cnt = 2;
+
+
                 return result;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -68,18 +75,32 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPreExecute() {
-        alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle("Login Status");
+
     }
 
     @Override
     protected void onPostExecute(String result) {
-        alertDialog.setMessage(result);
-        alertDialog.show();
+
+        if (result.equals("y"))
+        {
+
+
+        }
+        else if (result.equals("n"))
+        {
+
+            alertDialog = new AlertDialog.Builder(context).create();
+            alertDialog.setTitle("Login Status");
+            alertDialog.setMessage("Wrong login/password");
+            alertDialog.show();
+
+        }
     }
 
     @Override
-    protected void onProgressUpdate(Void... values) {
+    protected void onProgressUpdate(Boolean... values) {
         super.onProgressUpdate(values);
+
+
     }
 }
