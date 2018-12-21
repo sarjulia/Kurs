@@ -2,13 +2,13 @@ package com.example.julia.booking;
 
 public class GameItem {
     private int id;
-    private String name;
-    private String desc;
-    private int minpl;
-    private int maxpl;
-    private String tags;
+    private Object name;
+    private Object desc;
+    private Object minpl;
+    private Object maxpl;
+    private Object tags;
 
-    public GameItem(int id, String name, String desc, int minpl, int maxpl, String tags)
+    public GameItem(int id, Object name, Object desc, Object minpl, Object maxpl, Object tags)
     {
         this.id = id;
         this.name =name;
@@ -18,12 +18,20 @@ public class GameItem {
         this.tags = tags;
     }
 
-    public String getDesc() {
-        return desc;
+    public Object getMinpl() {
+        return (String)minpl;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setMinpl(Object minpl) {
+        this.minpl = minpl;
+    }
+
+    public Object getMaxpl() {
+        return maxpl;
+    }
+
+    public void setMaxpl(Object maxpl) {
+        this.maxpl = maxpl;
     }
 
     public int getId() {
@@ -34,35 +42,27 @@ public class GameItem {
         this.id = id;
     }
 
-    public int getMaxpl() {
-        return maxpl;
+    public Object getDesc() {
+        return desc;
     }
 
-    public void setMaxpl(int maxpl) {
-        this.maxpl = maxpl;
+    public void setDesc(Object desc) {
+        this.desc = desc;
     }
 
-    public int getMinpl() {
-        return minpl;
-    }
-
-    public void setMinpl(int minpl) {
-        this.minpl = minpl;
-    }
-
-    public String getName() {
+    public Object getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Object name) {
         this.name = name;
     }
 
-    public String getTags() {
+    public Object getTags() {
         return tags;
     }
 
-    public void setTags(String tags) {
+    public void setTags(Object tags) {
         this.tags = tags;
     }
 }

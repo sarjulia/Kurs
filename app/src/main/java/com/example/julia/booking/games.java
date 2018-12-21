@@ -35,6 +35,9 @@ import java.util.Map;
 import java.util.LinkedHashMap;
 import java.util.ResourceBundle;
 
+import static com.example.julia.booking.daoJSON.JSONtoList;
+import static com.example.julia.booking.daoJSON.reciveJSONforQuery;
+
 public class games extends AppCompatActivity {
 
     ItemAd_Game itad;
@@ -88,7 +91,7 @@ public class games extends AppCompatActivity {
 
         //static  final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 
-        //static final String DB_URL = "jdbc:mysql://" + DbStrings.DATABASESE_URL + "/" + DbStrings.DATABASE_NAME;
+        //static final String DB_URL = "jdbc:mysql://http://kursach.cisaodjoj1fj.us-east-1.rds.amazonaws.com:3306/Kursach";
 
 
 
@@ -98,13 +101,29 @@ public class games extends AppCompatActivity {
             progressTextView.setText("Connecting ...");
         }
 
-        /*@Override
+        @Override
         protected String doInBackground(String... param)
         {
-          Connection conn = null;
-          Statement stt = null;
 
-          try
+            try {
+
+                String toParse = reciveJSONforQuery("SELECT * FROM Games");
+                List<Object> res = JSONtoList(toParse);
+
+                for (int i =0 ; i < res.size(); i+=1)
+                {
+                    LinkedHashMap item = (LinkedHashMap<String,Object>) res.get(0);
+                    myGames.add(new GameItem(i+1,item.get("name"),item.get("description"),item.get("minPlayers"),item.get("maxPlayers"),item.get("tags")));
+                }
+
+                msg = "complete";
+
+            } catch (IOException e) {
+            }
+          //Connection conn = null;
+         // Statement stt = null;
+
+          /*try
           {
               Class.forName(JDBC_DRIVER);
               conn = DriverManager.getConnection(DB_URL, DbStrings.USERNAME, DbStrings.PASSWORD);
@@ -161,17 +180,11 @@ public class games extends AppCompatActivity {
               {
                   e.printStackTrace();
               }
-          }
+          }*/
 
             return null;
-        }*/
-        @Override
-        protected String doInBackground(String... params) {
-            //String login_url = "http://192.168.1.159/login.php";
-            String login_url = "http://188.242.9.169:8080/login.php";
-            
-            return null;
         }
+
 
 
 

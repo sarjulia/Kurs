@@ -98,11 +98,11 @@ public class ItemAd_Game extends BaseAdapter {
         TextView maxtv = (TextView) v.findViewById(R.id.Maxpeop);
         TextView tagstv = (TextView) v.findViewById(R.id.tags);
 
-        nametv.setText(myGames.get(position).getName());
-        desctv.setText(myGames.get(position).getDesc());
-        mintv.setText(myGames.get(position).getMinpl());
-        maxtv.setText(myGames.get(position).getMaxpl());
-        tagstv.setText(myGames.get(position).getTags());
+        nametv.setText(String.valueOf(myGames.get(position).getName()));
+        desctv.setText(String.valueOf(myGames.get(position).getDesc()));
+        mintv.setText(String.valueOf(myGames.get(position).getMinpl()));
+        maxtv.setText(String.valueOf(myGames.get(position).getMaxpl()));
+        tagstv.setText(String.valueOf(myGames.get(position).getTags()));
 
         v.setTag(myGames.get(position).getId());
         return v;
