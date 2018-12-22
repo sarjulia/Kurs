@@ -10,6 +10,8 @@ import android.content.Context;
 import android.widget.TextView;
 import android.widget.ListView;
 import android.os.AsyncTask;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -19,7 +21,11 @@ import  java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+
+import static com.example.julia.booking.daoJSON.JSONtoList;
+import static com.example.julia.booking.daoJSON.reciveJSONforQuery;
 
 public class Events extends AppCompatActivity {
 
@@ -58,13 +64,9 @@ public class Events extends AppCompatActivity {
         });
     }
 
-    private  class GetData extends AsyncTask<String,String,String>
-    {
-        String msg = "";
+    private  class GetData extends AsyncTask< String,Void ,String>
+    {String msg = "";
 
-        static  final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-
-        static final String DB_URL = "jdbc:mysql://" +DbStrings.DATABASESE_URL+DbStrings.DATABASE_NAME;
 
         @Override
         protected void onPreExecute()
@@ -75,77 +77,33 @@ public class Events extends AppCompatActivity {
         @Override
         protected String doInBackground(String... param)
         {
-            Connection conn = null;
-            Statement stt = null;
 
-            try
-            {
-                Class.forName(JDBC_DRIVER);
-                conn = DriverManager.getConnection(DB_URL,DbStrings.USERNAME, DbStrings.PASSWORD);
+            try {
 
-                stt = conn.createStatement();
-                String sql = "SELECT * FROM Events";
-                ResultSet rs = stt.executeQuery(sql);
-                int i =1;
+                String toParse = reciveJSONforQuery("SELECT * FROM Events");
+                List<Object> result = JSONtoList(toParse);
 
-                while (rs.next())
+                for (int i =0 ; i < result.size(); i+=1)
                 {
-                    String name = rs.getString("name");
-                    String desc = rs.getString("description");
-                    int cur = rs.getInt("currentAmountOfPeople");
-                    int max = rs.getInt("maxAmountOfPeople");
-                    Date data = rs.getDate("date");
-                    Time start = rs.getTime("beginTime");
-                    Time end = rs.getTime("endTime");
-
-
-                    myEvent.add(new EventItem(i,name,desc,cur,max,data,start,end));
-
-                    i+=1;
-
-                    // gamesMap.put(name,minpeop);
-                }
-                msg = "Complete";
-
-                rs. close();
-                stt.close();
-                conn.close();
-
-            }catch(SQLException connError)
-            {
-                msg = " error for JBDC";
-                connError.printStackTrace();
-            }catch(ClassNotFoundException e)
-            {
-                msg = " class not found";
-                e.printStackTrace();
-            }finally {
-                try{
-                    if (stt != null){
-                        stt.close();
-                    }
-                }catch (SQLException e)
-                {
-                    e.printStackTrace();
+                    LinkedHashMap item = (LinkedHashMap<String,Object>) result.get(i);
+                    myEvent.add(new EventItem(i+1,item.get("name"),item.get("description"),item.get("currentAmountOfPeople"),item.get("maxAmountOfPeople"),item.get("Date"),item.get("beginTime"),item.get("endTime")));
                 }
 
-                try{
-                    if (conn != null){
-                        conn.close();
-                    }
-                }catch (SQLException e)
-                {
-                    e.printStackTrace();
-                }
+                msg = "complete";
+
+            } catch (IOException e) {
             }
 
-            return null;
+            return msg;
         }
+
+
+
 
         @Override
         protected void onPostExecute(String msg)
         {
-            progressTextView.setText(this.msg);
+            progressTextView.setText(msg);
 
             if (myEvent.size() > 0 )
             {

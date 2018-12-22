@@ -10,7 +10,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="44dp"
         android:layout_marginTop="24dp"
-        android:text="Название" />
+        android:text="Название"
+        android:textColor="#000000"/>
 
     <TextView
         android:id="@+id/minpeop"
@@ -19,7 +20,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/name_ev"
         android:layout_marginTop="158dp"
-        android:text="Min" />
+        android:text="Min"
+        android:textColor="#000000"/>
 
     <TextView
         android:id="@+id/Maxpeop"
@@ -28,7 +30,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/minpeop"
         android:layout_marginStart="85dp"
-        android:text="Max" />
+        android:text="Max"
+        android:textColor="#000000"/>
 
     <TextView
         android:id="@+id/description"
@@ -37,7 +40,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
-        android:text="Описание" />
+        android:text="Описание"
+        android:textColor="#000000"/>
 
     <TextView
         android:id="@+id/tags"
@@ -46,6 +50,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/name_ev"
         android:layout_marginTop="206dp"
-        android:text="Тэги" />
+        android:text="Тэги"
+        android:textColor="#000000"/>
 
 </RelativeLayout>

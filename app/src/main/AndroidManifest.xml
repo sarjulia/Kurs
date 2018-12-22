@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".games">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +27,7 @@
         <activity android:name=".Events" />
         <activity android:name=".host"/>
         <activity android:name=".register" />
-        <activity android:name=".games" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".bookpage" />
         <activity android:name=".work"></activity>
     </application>

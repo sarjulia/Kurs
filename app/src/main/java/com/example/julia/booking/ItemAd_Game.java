@@ -10,60 +10,6 @@ import java.util.List;
 
 public class ItemAd_Game extends BaseAdapter {
 
-   /* LayoutInflater mInf;
-    Map<String,Double> map;
-    List <String> names;
-    List <String> descs;
-    List <String> tagss;
-    List <Double> mins;
-    List <Double> maxs;
-    List <Double> numbers;
-
-
-
-    public ItemAd_Game(Context c, Map m)
-    {
-        mInf = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        map = m;
-        names = new ArrayList<String>(map.keySet());
-        mins = new ArrayList<Double>(map.values());
-
-    }
-
-    @Override
-    public int getCount()
-    {
-        return map.size();
-    }
-
-    @Override
-    public Object getItem(int position)
-    {
-        return names.get(position);
-
-    }
-
-    @Override
-    public long getItemId (int position)
-    {
-        return position;
-
-    }
-
-    @Override
-    public View getView(int pos, View convertView, ViewGroup parent)
-    {
-        View v= mInf.inflate(R.layout.gameitem_layout,null);
-        TextView name =  (TextView) v.findViewById(R.id.name);
-        TextView minpeop =  (TextView) v.findViewById(R.id.minpeop);
-
-        name.setText(names.get(pos));
-        minpeop.setText(mins.get(pos).toString());
-
-        return v;
-
-
-    }*/
 
    private Context mContext;
    private List<GameItem> myGames;

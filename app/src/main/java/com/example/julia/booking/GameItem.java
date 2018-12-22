@@ -19,7 +19,7 @@ public class GameItem {
     }
 
     public Object getMinpl() {
-        return (String)minpl;
+        return minpl;
     }
 
     public void setMinpl(Object minpl) {

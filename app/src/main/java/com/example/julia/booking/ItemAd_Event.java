@@ -45,13 +45,13 @@ public class ItemAd_Event extends BaseAdapter {
         TextView start_ev = (TextView) v.findViewById(R.id.start_ev);
         TextView end_ev = (TextView) v.findViewById(R.id.end_ev);
 
-        name_ev.setText(myEvent.get(position).getName());
-        desc_ev.setText(myEvent.get(position).getDesc());
-        cur_ev.setText(myEvent.get(position).getCur());
-        max_ev.setText(myEvent.get(position).getMax());
-        data_ev.setText(myEvent.get(position).getData());
-        start_ev.setText(myEvent.get(position).getStart());
-        end_ev.setText(myEvent.get(position).getEnd());
+        name_ev.setText(String.valueOf(myEvent.get(position).getName()));
+        desc_ev.setText(String.valueOf(myEvent.get(position).getDesc()));
+        cur_ev.setText(String.valueOf(myEvent.get(position).getCur()));
+        max_ev.setText(String.valueOf(myEvent.get(position).getMax()));
+        data_ev.setText(String.valueOf(myEvent.get(position).getData()));
+        start_ev.setText(String.valueOf(myEvent.get(position).getStart()));
+        end_ev.setText(String.valueOf(myEvent.get(position).getEnd()));
 
 
         v.setTag(myEvent.get(position).getId());

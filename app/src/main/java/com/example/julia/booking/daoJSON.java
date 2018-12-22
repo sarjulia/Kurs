@@ -16,26 +16,22 @@ import java.util.List;
 import java.util.Map;
 
 public class daoJSON {
-    public static final String requestURL = "http://685debfc.ngrok.io/query";
+    public static final String requestURL = "http://8f1b4c21.ngrok.io/query";
 
     public static String reciveJSONforQuery(String query) throws IOException {
        String url = "http://localhost:3000/query";
-        //String url = "http://192.168.1.159:3000/query";
+
         URL obj = new URL(requestURL);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-        // optional default is GET
         con.setRequestMethod("POST");
 
-
-        //add request header
         con.setRequestProperty("User-Agent", "Mozilla/5.0");
 
         con.setDoOutput(true);
 
         DataOutputStream wr = new DataOutputStream(con.getOutputStream());
 
-        //SEND TO SERVER!!!
         wr.writeBytes("query=" + URLEncoder.encode(query, "UTF-8"));
 
         wr.flush();
@@ -59,9 +55,11 @@ public class daoJSON {
     public static List<Object> JSONtoList(String JSONString) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         TypeFactory typeFactory = objectMapper.getTypeFactory();
-        List<Object> someClassList = objectMapper.readValue(JSONString, typeFactory.constructCollectionType(List.class, Object.class));
-        return someClassList;
+        List<Object> someList = objectMapper.readValue(JSONString, typeFactory.constructCollectionType(List.class, Object.class));
+        return someList;
     }
+
+
 
 }
 

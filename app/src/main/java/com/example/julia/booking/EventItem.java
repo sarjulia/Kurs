@@ -8,15 +8,15 @@ import java.util.Date;
 public class EventItem
 {
     private int id;
-    private String name;
-    private String desc;
-    private int cur;
-    private int max;
-    private Date data;
-    private Time start;
-    private Time end;
+    private Object name;
+    private Object desc;
+    private Object cur;
+    private Object max;
+    private Object data;
+    private Object start;
+    private Object end;
 
-    public EventItem(int id, String name, String desc, int cur, int max, Date data,Time start, Time end )
+  public EventItem(int id, Object name, Object desc, Object cur, Object max, Object data,Object start, Object end )
     {
         this.id = id;
         this.name =name;
@@ -28,28 +28,27 @@ public class EventItem
         this.end = end;
     }
 
-    public String getStart() {
-        DateFormat df = new SimpleDateFormat("hh:mm:ss");
-        return df.format(start);
+    public Object getStart() {
+        return start;
     }
 
-    public void setStart(Time start) {
+    public void setStart(Object start) {
         this.start = start;
     }
 
-    public String getName() {
+    public Object getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Object name) {
         this.name = name;
     }
 
-    public int getMax() {
+    public Object getMax() {
         return max;
     }
 
-    public void setMax(int max) {
+    public void setMax(Object max) {
         this.max = max;
     }
 
@@ -61,37 +60,35 @@ public class EventItem
         this.id = id;
     }
 
-    public String getEnd() {
-        DateFormat df = new SimpleDateFormat("hh:mm:ss");
-        return df.format(end);
+    public Object getEnd() {
+        return end;
     }
 
-    public void setEnd(Time end) {
+    public void setEnd(Object end) {
         this.end = end;
     }
 
-    public String getDesc() {
+    public Object getDesc() {
         return desc;
     }
 
-    public void setDesc(String desc) {
+    public void setDesc(Object desc) {
         this.desc = desc;
     }
 
-    public String getData() {
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        return df.format(data);
+    public Object getData() {
+        return data;
     }
 
-    public void setData(Date data) {
+    public void setData(Object data) {
         this.data = data;
     }
 
-    public int getCur() {
+    public Object getCur() {
         return cur;
     }
 
-    public void setCur(int cur) {
+    public void setCur(Object cur) {
         this.cur = cur;
     }
 }
