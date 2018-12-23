@@ -55,7 +55,7 @@ public class games extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent startIntent = new Intent(getApplicationContext(),host.class);
+                Intent startIntent = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(startIntent);
             }
         });
