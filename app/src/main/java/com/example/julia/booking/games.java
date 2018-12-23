@@ -1,15 +1,19 @@
 package com.example.julia.booking;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.content.Context;
 import android.widget.TextView;
 import android.widget.ListView;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -55,7 +59,7 @@ public class games extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent startIntent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent startIntent = new Intent(getApplicationContext(),host.class);
                 startActivity(startIntent);
             }
         });
@@ -109,6 +113,37 @@ public class games extends AppCompatActivity {
             {
                 itad = new ItemAd_Game(getApplicationContext(), myGames );
                 GameView.setAdapter(itad);
+
+                // click function
+                GameView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+                                            {
+                                                public void onItemClick(AdapterView<?> adapterView, View view,int position, long l)
+                                                {
+                                                    GameItem chosen = myGames.get(position);
+                                                    AlertDialog.Builder a_build = new AlertDialog.Builder(games.this);
+                                                    a_build.setMessage("Do you want to book "+ chosen.getName().toString() + "?")
+                                                            .setCancelable(false)
+                                                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                                                @Override
+                                                                public void onClick(DialogInterface dialog, int which) {
+                                                                    // inserting here
+
+                                                                    //closing here
+                                                                    dialog.cancel();
+                                                                }
+                                                            })
+                                                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                                                @Override
+                                                                public void onClick(DialogInterface dialog, int which) {
+                                                                    dialog.cancel();
+                                                                }
+                                                            });
+                                                    AlertDialog choice = a_build.create();
+                                                    choice.setTitle("Comfirmation of choice");
+                                                    choice.show();
+                                                }
+                                            }
+                );
             }
         }
     }

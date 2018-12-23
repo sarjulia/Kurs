@@ -1,10 +1,14 @@
 package com.example.julia.booking;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.EventLog;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.content.Context;
 import android.widget.TextView;
@@ -109,6 +113,36 @@ public class Events extends AppCompatActivity {
             {
                 evad = new ItemAd_Event(getApplicationContext(), myEvent );
                 EventsView.setAdapter(evad);
+
+                EventsView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+                                                  {
+                                                      public void onItemClick(AdapterView<?> adapterView, View view,int position, long l)
+                                                      {
+                                                          EventItem chosen = myEvent.get(position);
+                                                          AlertDialog.Builder a_build = new AlertDialog.Builder(Events.this);
+                                                          a_build.setMessage("Do you want to join "+ chosen.getName().toString() + " ?")
+                                                                  .setCancelable(false)
+                                                                  .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                                                      @Override
+                                                                      public void onClick(DialogInterface dialog, int which) {
+                                                                          // inserting here
+
+                                                                          //closing here
+                                                                          dialog.cancel();
+                                                                      }
+                                                                  })
+                                                                  .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                                                      @Override
+                                                                      public void onClick(DialogInterface dialog, int which) {
+                                                                          dialog.cancel();
+                                                                      }
+                                                                  });
+                                                          AlertDialog choice = a_build.create();
+                                                          choice.setTitle("Comfirmation of choice");
+                                                          choice.show();
+                                                      }
+                                                  }
+                );
             }
         }
     }

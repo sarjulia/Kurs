@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 public class daoJSON {
-    public static final String requestURL = "http://8f1b4c21.ngrok.io/query";
+    public static final String requestURL = "http://3e31ada5.ngrok.io/query";
 
     public static String reciveJSONforQuery(String query) throws IOException {
        String url = "http://localhost:3000/query";

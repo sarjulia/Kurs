@@ -35,9 +35,9 @@
 
     <Button
         android:id="@+id/exit"
-        android:layout_width="wrap_content"
+        android:layout_width="194dp"
         android:layout_height="wrap_content"
         android:text="Выйти"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="423dp" />
+        tools:layout_editor_absoluteX="108dp"
+        tools:layout_editor_absoluteY="420dp" />
 </android.support.constraint.ConstraintLayout>

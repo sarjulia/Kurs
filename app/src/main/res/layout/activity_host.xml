@@ -6,33 +6,58 @@
     android:layout_height="match_parent"
     tools:context=".host">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="304dp"
-        android:layout_height="269dp"
-        android:text="Лист бронирований"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="40dp" />
-
     <Button
-        android:id="@+id/createbook"
-        android:layout_width="147dp"
+        android:id="@+id/bookevent"
+        android:layout_width="232dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Создать новое"
-        app:layout_constraintBottom_toTopOf="@+id/Выход"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <Button
-        android:id="@+id/Выход"
-        android:layout_width="138dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="40dp"
         android:text="Выйти"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="233dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Записаться на мероприятие"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="403dp" />
+
+    <Button
+        android:id="@+id/booktable"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:text="Забронировать стол"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="329dp" />
+
+    <ListView
+        android:id="@+id/BookView"
+        android:layout_width="368dp"
+        android:layout_height="231dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="90dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="198dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Мои бронирования"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#000000"/>
 </android.support.constraint.ConstraintLayout>

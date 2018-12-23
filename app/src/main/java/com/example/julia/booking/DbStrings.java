@@ -6,4 +6,6 @@ public class DbStrings {
     static final String USERNAME = "master";
     static final String PASSWORD = "ThisIsPass";
 
+
+
 }
