@@ -128,6 +128,8 @@ public class Events extends AppCompatActivity {
                                                                           // inserting here
                                                                           InsertEvent retrievedata2 = new InsertEvent();
                                                                           retrievedata2.execute();
+                                                                          Intent startIntent = new Intent(getApplicationContext(),host.class);
+                                                                          startActivity(startIntent);
 
                                                                           //closing here
                                                                           dialog.cancel();
