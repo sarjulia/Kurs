@@ -6,11 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".host">
 
+    <ListView
+        android:id="@+id/BookView"
+        android:layout_width="368dp"
+        android:layout_height="294dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.225" />
+
     <Button
         android:id="@+id/bookevent"
         android:layout_width="232dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        android:onClick="exitToMain"
         android:text="Выйти"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,44 +37,49 @@
         android:id="@+id/button"
         android:layout_width="233dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="bookEvent"
         android:text="Записаться на мероприятие"
+        app:layout_constraintBottom_toTopOf="@+id/bookevent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="403dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/booktable"
         android:layout_width="228dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="bookTable"
         android:text="Забронировать стол"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="329dp" />
-
-    <ListView
-        android:id="@+id/BookView"
-        android:layout_width="368dp"
-        android:layout_height="231dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="90dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="198dp"
         android:layout_height="36dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:text="Мои бронирования"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="#000000"/>
+        app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>

@@ -19,7 +19,7 @@ import java.util.concurrent.ExecutionException;
 import static com.example.julia.booking.daoJSON.JSONtoList;
 import com.example.julia.booking.userData;
 import com.example.julia.booking.currentUserData;
-import static com.example.julia.booking.daoJSON.putJSONforQuery;
+
 import static com.example.julia.booking.daoJSON.reciveJSONforQuery;
 
 public class MainActivity extends AppCompatActivity {
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         {
 
             try {
-                //String toParse = reciveJSONforQuery("INSERT INTO Users VALUES ('Da34', 'Kuz4a', 'Maiail4.324com', '+791123342452', 'DKu2453z', 'pa$$wo3r4d', 1);");
+
                 String toParse = reciveJSONforQuery("SELECT * FROM Users where login like '" + username + "' and password like '" + password + "';");
 
                 if (toParse.equals("[]")) {

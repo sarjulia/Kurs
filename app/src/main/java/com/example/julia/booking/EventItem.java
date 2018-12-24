@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class EventItem
 {
-    private int id;
+    private Object id;
     private Object name;
     private Object desc;
     private Object cur;
@@ -15,8 +15,9 @@ public class EventItem
     private Object data;
     private Object start;
     private Object end;
-
-  public EventItem(int id, Object name, Object desc, Object cur, Object max, Object data,Object start, Object end )
+    public EventItem()
+    {}
+  public EventItem(Object id, Object name, Object desc, Object cur, Object max, Object data,Object start, Object end )
     {
         this.id = id;
         this.name =name;
@@ -52,11 +53,11 @@ public class EventItem
         this.max = max;
     }
 
-    public int getId() {
+    public Object getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Object id) {
         this.id = id;
     }
 

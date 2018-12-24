@@ -39,13 +39,14 @@ public class ItemAd_Book  extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup viewGroup) {
 
         View v= View.inflate(mContext, R.layout.bookitem_view,null);
-        TextView table_id_tv =  (TextView) v.findViewById(R.id.tablenumber);
+        TextView table_id_tv =  (TextView) v.findViewById(R.id.tableId);
         TextView roomname_tv = (TextView) v.findViewById(R.id.RoomNumber);
         TextView date_tv =  (TextView) v.findViewById(R.id.Date);
         TextView start_tv = (TextView) v.findViewById(R.id.start);
         TextView end_tv = (TextView) v.findViewById(R.id.end);
 
         table_id_tv.setText(String.valueOf(myBooks.get(position).getTable_id()));
+        //table_id_tv.setText("2");
         roomname_tv.setText(String.valueOf(myBooks.get(position).getRoomName()));
         date_tv.setText(String.valueOf(myBooks.get(position).getDate()));
         start_tv.setText(String.valueOf(myBooks.get(position).getStart()));

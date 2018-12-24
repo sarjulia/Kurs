@@ -1,18 +1,26 @@
 package com.example.julia.booking;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class BookItem {
-    private int id;
-    private Object table_id;
+    private Object id;
     private Object roomName;
+    private Object table_id;
+    private Object userLogin;
     private Object date;
     private Object start;
     private Object end;
-
-    public BookItem(int id, Object table_id, Object roomName, Object date, Object start, Object end)
+    public BookItem()
+    {}
+    public BookItem(Object id,  Object roomName,Object table_id, Object userLogin, Object date, Object start, Object end)
     {
         this.id = id;
         this.table_id =table_id;
         this.roomName = roomName;
+        this.userLogin = userLogin;
         this.date = date;
         this.start = start;
         this.end = end;
@@ -20,6 +28,10 @@ public class BookItem {
 
     public Object getTable_id() {
         return table_id;
+    }
+
+    public Object getUserLogin() {
+        return userLogin;
     }
 
     public void setTable_id(Object table_id) {
@@ -42,11 +54,11 @@ public class BookItem {
         this.roomName = roomName;
     }
 
-    public int getId() {
+    public Object getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Object id) {
         this.id = id;
     }
 

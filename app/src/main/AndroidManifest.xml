@@ -6,8 +6,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,19 +15,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".games">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".tables" />
         <activity android:name=".Events" />
-        <activity android:name=".host"/>
+        <activity android:name=".games" />
+        <activity android:name=".host" />
         <activity android:name=".register" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".work"></activity>
+        <activity android:name=".tables" />
+        <activity android:name=".work" />
+        <activity android:name=".addGame" />
+        <activity android:name=".addEvent"></activity>
     </application>
 
 </manifest>

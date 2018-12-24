@@ -28,11 +28,11 @@ import static com.example.julia.booking.daoJSON.reciveJSONforQuery;
 
 
 public class games extends AppCompatActivity {
-
+    String id;
     ItemAd_Game itad;
     Context thisContext;
     ListView GameView;
-    TextView progressTextView;
+    GameItem chosen;
     List<GameItem> myGames;
 
 
@@ -43,26 +43,18 @@ public class games extends AppCompatActivity {
 
         Resources res = getResources();
         GameView = (ListView) findViewById(R.id.GameView);
-        progressTextView = (TextView) findViewById(R.id.progressTextView);
+
         thisContext = this;
 
         Context context;
 
         myGames = new ArrayList<>();
 
-        progressTextView.setText("");
+
        GetData retrievedata = new GetData();
         retrievedata.execute("");
 
-        Button bookgameBtn = (Button)findViewById(R.id.bookgame);
-        bookgameBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                Intent startIntent = new Intent(getApplicationContext(),host.class);
-                startActivity(startIntent);
-            }
-        });
 
 
 
@@ -75,7 +67,7 @@ public class games extends AppCompatActivity {
          @Override
          protected void onPreExecute()
         {
-            progressTextView.setText("Connecting ...");
+
       }
 
         @Override
@@ -107,7 +99,7 @@ public class games extends AppCompatActivity {
         @Override
         protected void onPostExecute(String msg)
         {
-            progressTextView.setText(msg);
+
 
             if (myGames.size() > 0 )
             {
@@ -119,7 +111,7 @@ public class games extends AppCompatActivity {
                                             {
                                                 public void onItemClick(AdapterView<?> adapterView, View view,int position, long l)
                                                 {
-                                                    GameItem chosen = myGames.get(position);
+                                                    chosen = myGames.get(position);
                                                     AlertDialog.Builder a_build = new AlertDialog.Builder(games.this);
                                                     a_build.setMessage("Do you want to book "+ chosen.getName().toString() + "?")
                                                             .setCancelable(false)
@@ -127,7 +119,8 @@ public class games extends AppCompatActivity {
                                                                 @Override
                                                                 public void onClick(DialogInterface dialog, int which) {
                                                                     // inserting here
-
+                                                                    goAdd retrievedata = new goAdd();
+                                                                    retrievedata.execute("");
                                                                     //closing here
                                                                     dialog.cancel();
                                                                 }
@@ -145,6 +138,33 @@ public class games extends AppCompatActivity {
                                             }
                 );
             }
+        }
+    }
+    public void dontBook(View view)
+    {
+        Intent startIntent = new Intent(getApplicationContext(),host.class);
+        startActivity(startIntent);
+    }
+
+    private class goAdd extends AsyncTask<String, Void, Boolean> {
+        @Override
+        protected Boolean doInBackground(String... param) {
+
+            try {
+
+                String toParse = reciveJSONforQuery("select id from Booking where roomName='"+currentUserData.booking_name+"'and tableId='"+currentUserData.booking_id+"'and userLogin='"+currentUserData.booking_login+"'and bookingDate='"+currentUserData.booking_stDate+"'and beginTime='"+currentUserData.booking_stTime+"';");
+                List<Object> result = JSONtoList(toParse);
+
+
+                LinkedHashMap item = (LinkedHashMap<String,Object>) result.get(0);
+                id = item.get("id").toString();
+
+                toParse = reciveJSONforQuery("insert into bookingGames values ('"+id+"', '"+chosen.getName()+"');");
+
+            } catch (IOException e) {
+            }
+
+            return Boolean.FALSE;
         }
     }
 

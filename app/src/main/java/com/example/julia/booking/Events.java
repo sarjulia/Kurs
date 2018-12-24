@@ -36,9 +36,9 @@ public class Events extends AppCompatActivity {
     ItemAd_Event evad;
     Context thisContext;
     ListView EventsView;
-    TextView progressTextView;
-    List<EventItem> myEvent;
 
+    List<EventItem> myEvent;
+    EventItem chosen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,14 +46,14 @@ public class Events extends AppCompatActivity {
 
         Resources res = getResources();
         EventsView = (ListView) findViewById(R.id.EventsView);
-        progressTextView = (TextView) findViewById(R.id.progressTextView);
+
         thisContext = this;
 
         myEvent = new ArrayList<>();
 
 
 
-        progressTextView.setText("");
+
         GetData retrievedata = new GetData();
         retrievedata.execute("");
 
@@ -75,7 +75,7 @@ public class Events extends AppCompatActivity {
         @Override
         protected void onPreExecute()
         {
-            progressTextView.setText("Connecting ...");
+
         }
 
         @Override
@@ -107,7 +107,7 @@ public class Events extends AppCompatActivity {
         @Override
         protected void onPostExecute(String msg)
         {
-            progressTextView.setText(msg);
+
 
             if (myEvent.size() > 0 )
             {
@@ -118,7 +118,7 @@ public class Events extends AppCompatActivity {
                                                   {
                                                       public void onItemClick(AdapterView<?> adapterView, View view,int position, long l)
                                                       {
-                                                          EventItem chosen = myEvent.get(position);
+                                                          chosen = myEvent.get(position);
                                                           AlertDialog.Builder a_build = new AlertDialog.Builder(Events.this);
                                                           a_build.setMessage("Do you want to join "+ chosen.getName().toString() + " ?")
                                                                   .setCancelable(false)
@@ -126,6 +126,8 @@ public class Events extends AppCompatActivity {
                                                                       @Override
                                                                       public void onClick(DialogInterface dialog, int which) {
                                                                           // inserting here
+                                                                          InsertEvent retrievedata2 = new InsertEvent();
+                                                                          retrievedata2.execute();
 
                                                                           //closing here
                                                                           dialog.cancel();
@@ -144,6 +146,44 @@ public class Events extends AppCompatActivity {
                                                   }
                 );
             }
+        }
+    }
+    private class InsertEvent extends AsyncTask<String, Void, String> {
+
+
+
+        @Override
+        protected void onPreExecute() {
+            // initialize varies for sql ask
+
+        }
+
+        @Override
+        protected String doInBackground(String... param) {
+
+            try {
+
+
+                // new select from booking table
+                String toParse = reciveJSONforQuery("update Events set currentAmountOfPeople = currentAmountOfPeople + 1 where name = '"+ chosen.getName() +"'; ");
+                String toParse2 = reciveJSONforQuery("INSERT INTO Guests VALUES ('"+chosen.getName()+"', '"+currentUserData.getLogin()+"');");
+
+                List<Object> result = JSONtoList(toParse);
+
+
+
+
+            } catch (IOException e) {
+            }
+
+            return "2";
+        }
+
+
+        @Override
+        protected void onPostExecute(String smth) {
+
+
         }
     }
 

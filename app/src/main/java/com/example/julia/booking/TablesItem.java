@@ -1,13 +1,13 @@
 package com.example.julia.booking;
 
 public class TablesItem {
-    private int id;
+    private Object id;
     private Object tableid;
     private Object roomName;
     private Object maxCapacity;
 
 
-    public TablesItem(int id, Object tableid, Object roomName, Object maxCapacity)
+    public TablesItem(Object id, Object tableid, Object roomName, Object maxCapacity)
     {
         this.id = id;
         this.tableid = tableid;
@@ -39,11 +39,11 @@ public class TablesItem {
         this.maxCapacity = maxCapacity;
     }
 
-    public int getId() {
+    public Object getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Object id) {
         this.id = id;
     }
 }
